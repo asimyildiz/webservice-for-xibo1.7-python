@@ -9,3 +9,6 @@ __date__ = "$18.Eki.2015 21:26:05$"
 DEBUG = False
 DATABASE = "MYSQL"
 DATABASE_LOGGING = False
+DEFAULT_FONT_SIZE = 32
+DEFAULT_FONT_COLOR = "#FFFFFF"
+DEFAULT_FONT_FAMILY = ["arial","helvetica","sans-serif"]

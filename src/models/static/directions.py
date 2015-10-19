@@ -3,8 +3,11 @@
 # and open the template in the editor.
 
 __author__ = "asim"
-__date__ = "$18.Eki.2015 21:06:42$"
+__date__ = "$19.Eki.2015 19:58:31$"
 
-import settings
-if (settings.DATABASE == "MYSQL"):
-    from database.mysql.DatabaseQueries import DatabaseQueries
+# TODO add to this class, directions when we need one
+class directions():
+    LEFT="left"
+    RIGHT="right"
+    UP="up"
+    DOWN="down"

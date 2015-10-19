@@ -3,8 +3,12 @@
 # and open the template in the editor.
 
 __author__ = "asim"
-__date__ = "$18.Eki.2015 21:06:42$"
+__date__ = "$19.Eki.2015 19:48:44$"
 
-import settings
-if (settings.DATABASE == "MYSQL"):
-    from database.mysql.DatabaseQueries import DatabaseQueries
+# TODO add to this class types when we need one
+class mediatypes():
+    TEXT="text"
+    IMG="img"
+    LIVE="live" #rtmp, hls streams
+    VIDEO="video" #mp4
+    
