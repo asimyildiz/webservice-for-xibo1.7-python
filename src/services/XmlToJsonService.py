@@ -11,6 +11,7 @@ from models.screen import screen
 from models.region import region
 from models.options.textoptions import textoptions
 from models.static.mediatypes import mediatypes
+
 class XmlToJsonService():
     __parser = xml.etree.ElementTree
     __tree = object()
@@ -52,14 +53,7 @@ class XmlToJsonService():
         alloptions = []
         for optionxml in list(optionsxml):                        
             alloptions.append(options(dict([(option.tag, option.text) for option in optionxml])));
-        
-        for option in alloptions:
-            print(option)
-            
-                
-        #print(dict((child.tag, child.attrib) for child in list(optionsxml)))
-        #newoptions = options(list(optionsxml));
-        #print (newoptions)
+        return alloptions;
     
     def toJson(self):
         self.__parseScreen(self.__tree.attrib);

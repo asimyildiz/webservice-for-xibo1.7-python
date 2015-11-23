@@ -5,13 +5,11 @@
 __author__ = "asim"
 __date__ = "$19.Eki.2015 20:39:01$"
 
-from services.XmlToJsonService import XmlToJsonService
 import settings
-if (settings.DATABASE == "MYSQL"):
-    from database.mysql.DatabaseQueries import DatabaseQueries
+from services.XmlToJsonService import XmlToJsonService
+from services.QueryService import QueryService
 
-queryManager = DatabaseQueries(settings);
-layouts = queryManager.getAllLayouts();
+layouts = QueryService.getAllLayouts();
 for layout in layouts: 
     print (layout.xml);
     xmltojson = XmlToJsonService(layout.xml);    

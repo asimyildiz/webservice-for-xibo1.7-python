@@ -30,7 +30,6 @@ class user(Base):
         CSPRNG = Column(TINYINT(4), nullable=False, default=0)
         newUserWizard = Column(TINYINT(4), nullable=False, default=0)
         
-        
         def __init__(self):
             return
 
