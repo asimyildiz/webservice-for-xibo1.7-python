@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 23 Kas 2015, 18:03:37
+-- Üretim Zamanı: 23 Kas 2015, 18:26:43
 -- Sunucu sürümü: 5.6.21-log
 -- PHP Sürümü: 5.6.1
 
@@ -210,6 +210,48 @@ INSERT INTO `datatype` (`DataTypeID`, `DataType`) VALUES
 (2, 'Number'),
 (3, 'Date'),
 (4, 'Image');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `device`
+--
+
+CREATE TABLE IF NOT EXISTS `device` (
+  `device_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `device_securecode` varchar(255) NOT NULL,
+  `device_clientid` int(11) NOT NULL,
+  `device_name` varchar(255) NOT NULL,
+  `device_detail` text,
+  `device_cpuid` varchar(50) NOT NULL,
+  `device_lastaccess` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `device_ip` varchar(15) NOT NULL,
+  `device_localip` varchar(15) NOT NULL,
+  `device_activationdate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `device_deactivationdate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`device_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `deviceaccess`
+--
+
+CREATE TABLE IF NOT EXISTS `deviceaccess` (
+  `deviceaccess_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `device_id` bigint(20) NOT NULL,
+  `layout_id` int(11) NOT NULL,
+  `deviceaccess_layoutdownloaded` char(1) NOT NULL DEFAULT '0',
+  `deviceaccess_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deviceaccess_hdd` varchar(50) NOT NULL,
+  `deviceaccess_freehdd` varchar(50) NOT NULL,
+  `deviceaccess_memory` varchar(50) NOT NULL,
+  `deviceaccess_freememory` varchar(50) NOT NULL,
+  `deviceaccess_lastsound` int(11) NOT NULL,
+  `deviceaccess_version` varchar(10) NOT NULL,
+  PRIMARY KEY (`deviceaccess_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
