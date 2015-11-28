@@ -6,12 +6,11 @@ __author__ = "asim"
 __date__ = "$19.Eki.2015 20:39:01$"
 
 import settings
-from services.XmlToJsonService import XmlToJsonService
+from services.ScreenXmlToJsonService import ScreenXmlToJsonService
 from services.QueryService import QueryService
 
 layouts = QueryService.getAllLayouts();
 for layout in layouts: 
-    print (layout.xml);
-    xmltojson = XmlToJsonService(layout.xml);    
+    #print (layout.xml);
+    xmltojson = ScreenXmlToJsonService(layout.xml);    
     xmltojson.toJson();
-    

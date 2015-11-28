@@ -12,3 +12,4 @@ DATABASE_LOGGING = False
 DEFAULT_FONT_SIZE = 32
 DEFAULT_FONT_COLOR = "#FFFFFF"
 DEFAULT_FONT_FAMILY = ["arial","helvetica","sans-serif"]
+DEFAULT_FONT_STYLES = ["normal"]

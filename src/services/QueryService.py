@@ -16,7 +16,7 @@ from services.LogService import LogService
 class QueryService():
     @classmethod
     def getAllLayouts(self):
-        LogService.logMessage("QueryService.getAllLayouts", "info");        
+        LogService.logMessage("QueryService.getAllLayouts", LogService.INFO);        
         # make filtering more programmatic
         #filters = ["logger_clientid = '" + str(clientId) + "'", "logger_logtype = " + str(logType)];            
         filters = [];

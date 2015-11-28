@@ -5,6 +5,7 @@
 __author__ = "asim"
 __date__ = "$19.Eki.2015 19:56:44$"
 
-class options():
+from models.AbstractModel import AbstractModel
+class options(AbstractModel):
     def __init__(self):
         return

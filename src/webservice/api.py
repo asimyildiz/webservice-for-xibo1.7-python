@@ -14,9 +14,9 @@ from services.LogService import LogService
 
 @dispatcher.add_method
 def getAllLayouts(**kwargs):
-    LogService.logMessage("api.getAllLayouts", "info");    
+    LogService.logMessage("api.getAllLayouts", LogService.INFO);    
     layouts = QueryService.getAllLayouts();    
     for layout in layouts: 
-        LogService.logMessage("api.getAllLayouts : layout " + layout.xml, "info");
+        LogService.logMessage("api.getAllLayouts : layout " + layout.xml, LogService.INFO);
         xmltojson = XmlToJsonService(layout.xml);    
         xmltojson.toJson();    

@@ -7,16 +7,22 @@ __date__ = "$03.Kas.2015 16:18:39$"
 
 import logging
 class LogService(object):    
+    DEBUG = "debug"
+    WARNING = "warning"
+    ERROR = "error"
+    CRITICAL = "critical"
+    INFO = "info"
+    
     @staticmethod
     def logMessage(message, logType):
         logging.basicConfig(filename='DigitalSignage.log',level=logging.DEBUG)
-        if logType == "debug":
+        if logType == LogService.DEBUG:
             logging.debug(message);
-        elif logType == "warning":
+        elif logType == LogService.WARNING:
             logging.warning(message);
-        elif logType == "error":
+        elif logType == LogService.ERROR:
             logging.error(message);
-        elif logType == "critical":
+        elif logType == LogService.CRITICAL:
             logging.critical(message);
         else :
             logging.info(message);
