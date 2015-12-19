@@ -46,8 +46,8 @@ class textmedia(media):
     # with all base objects added    
     def _toJson(self):        
         mediaJson = super(textmedia,self)._toJson();
-        mediaJson += (",fontSize:" + self.safeStr(self.fontSize) +
-                    ",fontColor:" + self.safeStr(self.fontColor));
+        mediaJson += ("," + self.safeStr("fontSize") + ":" + self.safeStr(self.fontSize) +
+                    "," + self.safeStr("fontColor") + ":" + self.safeStr(self.fontColor));
         mediaJson += self.toJsonArray("fontFamily", self.fontFamily);
         mediaJson += self.toJsonArray("fontStyles", self.fontStyles);
         
@@ -62,7 +62,7 @@ class textmedia(media):
     def __str__(self):
         return ("textmedia() : {" + 
                 "\nduration : " + self.safeStr(self.duration) + 
-                "\ntextoptions : " + self.safeStr(self.textoptions) + 
+                "\ntextoptions : " + self.safeStr(self.options) + 
                 "\nfontSize : " + self.safeStr(self.fontSize) + 
                 "\nfontColor : " + self.safeStr(self.fontColor) +
                 "\nfontFamily : " + ', '.join(self.safeStr(obj) for obj in self.fontFamily) + 

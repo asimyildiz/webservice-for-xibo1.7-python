@@ -8,7 +8,7 @@ __date__ = "$19.Eki.2015 19:48:44$"
 # TODO add to this class types when we need one
 class mediatypes():
     TEXT="text"
-    IMG="img"
-    LIVE="live" #rtmp, hls streams
+    IMG="image"
+    LIVE="localvideo" #rtmp, hls streams
     VIDEO="video" #mp4
     

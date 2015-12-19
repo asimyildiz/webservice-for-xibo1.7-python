@@ -26,6 +26,8 @@ class screen(AbstractModel):
         self.height = height if not (height is None) else -1;
         self.bgcolor = bgcolor if not (bgcolor is None) else "";
         self.background = background if not (background is None) else "";
+        self.regions = [];
+        self.transitions = [];
     
     # add a region object to screen model
     # region {region} : region object to add screen object model
@@ -40,10 +42,10 @@ class screen(AbstractModel):
     # convert object to json representation
     # with all child objects traversed
     def _toJson(self):
-        screenJson = ("width:" + self.safeStr(self.width) +
-                    ",height:" + self.safeStr(self.height) +
-                    ",bgcolor:" + self.safeStr(self.bgcolor) + 
-                    ",background:" + self.safeStr(self.background));
+        screenJson = (self.safeStr("width") + ":" + self.safeStr(self.width) +
+                    "," + self.safeStr("height") + ":" + self.safeStr(self.height) +
+                    "," + self.safeStr("bgcolor") + ":" + self.safeStr(self.bgcolor) + 
+                    "," + self.safeStr("background") + ":" + self.safeStr(self.background));
         screenJson += self.toJsonArray("regions", self.regions);
         screenJson += self.toJsonArray("transitions", self.transitions);
         

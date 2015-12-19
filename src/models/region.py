@@ -23,7 +23,8 @@ class region(AbstractModel):
         self.width = width if not (width is None) else -1;
         self.height = height if not (height is None) else -1;
         self.top = top if not (top is None) else -1;
-        self.left = left if not (left is None) else -1;       
+        self.left = left if not (left is None) else -1;    
+        self.medias = [];
         
     # add a media object to region model
     # media {media} : media object to add region object model
@@ -33,10 +34,10 @@ class region(AbstractModel):
     # convert object to json representation
     # with all child objects traversed
     def _toJson(self):
-        regionJson = ("width:" + self.safeStr(self.width) +
-                    ",height:" + self.safeStr(self.height) +
-                    ",top:" + self.safeStr(self.top) +
-                    ",left:" + self.safeStr(self.left));
+        regionJson = (self.safeStr("width") + ":" + self.safeStr(self.width) +
+                    "," + self.safeStr("height") + ":" + self.safeStr(self.height) +
+                    "," + self.safeStr("top") + ":" + self.safeStr(self.top) +
+                    "," + self.safeStr("left") + ":" + self.safeStr(self.left));
         regionJson += self.toJsonArray("medias", self.medias);
         return regionJson;
     

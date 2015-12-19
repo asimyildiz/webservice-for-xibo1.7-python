@@ -22,8 +22,8 @@ class media(AbstractModel):
     # with all child objects traversed
     # this should be called from child class 
     def _toJson(self):        
-        return ("duration:" + self.safeStr(self.duration) +
-                ",options:" + self.safeStr(self.options));
+        return (self.safeStr("duration") + ":" + self.safeStr(self.duration) +
+                "," + self.safeStr("options") + ":" + self.options.toJson());
     
     # string representation of the object model
     def __repr__(self):

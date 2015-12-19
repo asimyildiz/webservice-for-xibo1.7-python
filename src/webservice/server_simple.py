@@ -21,7 +21,7 @@ def application(request):
 def parse_args(arguments=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('-P', '--port', type=int, default=4000, help='server port')
-    parser.add_argument('-H', '--host', default='5.44.154.209', help='server host')
+    parser.add_argument('-H', '--host', default='127.0.0.1', help='server host')
     return parser.parse_args(arguments)
 
 if __name__ == '__main__':

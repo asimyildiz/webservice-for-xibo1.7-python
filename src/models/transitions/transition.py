@@ -21,8 +21,8 @@ class transition(AbstractModel):
     # with all child objects traversed
     # this should be called from child class 
     def _toJson(self):        
-        return ("duration:" + self.safeStr(self.duration) +
-                ",direction:" + self.safeStr(self.direction));
+        return (self.safeStr("duration") + ":" + self.safeStr(self.duration) +
+                "," + self.safeStr("direction") + ":" + self.safeStr(self.direction));
     
     # string representation of the object model
     def __repr__(self):

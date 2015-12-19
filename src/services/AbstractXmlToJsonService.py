@@ -10,17 +10,19 @@ import settings
 from services.LogService import LogService
 
 class AbstractXmlToJsonService():    
-    _tree = object()    
+    _tree = None;  
+    _layoutID = None;
     
-    def __init__(self, xmlstr):
+    def __init__(self, xmlstr, layoutID):
         LogService.logMessage("AbstractXmlToJsonService.__init__", LogService.INFO);        
-        self._tree = xml.etree.ElementTree.fromstring(xmlstr);        
+        self._tree = xml.etree.ElementTree.fromstring(xmlstr);          
+        self._layoutID = layoutID;
     
     def parse(self):
         LogService.logMessage("AbstractXmlToJsonService.parse", LogService.ERROR);        
-        raise Exception('parse method shall be overriden!')        
+        raise NotImplementedError('parse method shall be overriden!');        
     
     def toJson(self):
         LogService.logMessage("AbstractXmlToJsonService.toJson", LogService.ERROR);
-        raise Exception('toJson method shall be overriden!')
+        raise NotImplementedError('toJson method shall be overriden!');
         

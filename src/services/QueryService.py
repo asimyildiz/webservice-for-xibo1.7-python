@@ -10,14 +10,34 @@ from datetime import datetime
 from database.DatabaseConnector import DatabaseConnector
 from database.models.layout import layout
 from database.models.user import user
+from database.models.device import device
 
 from services.LogService import LogService
 
 class QueryService():
+    # TODO make these queries more secure, such as do not return result if userID is none
     @classmethod
-    def getAllLayouts(self):
+    def getAllLayouts(self, userID=None):
         LogService.logMessage("QueryService.getAllLayouts", LogService.INFO);        
-        # make filtering more programmatic
-        #filters = ["logger_clientid = '" + str(clientId) + "'", "logger_logtype = " + str(logType)];            
+        # make filtering more programmatic        
         filters = [];
-        return DatabaseConnector.select(layout, filters).all();        
+        if userID != None:
+            filters = ["userID = " + str(userID)];
+        return DatabaseConnector.select(layout, filters).all();   
+    
+    @classmethod
+    def getLastLayout(self, userID=None):
+        LogService.logMessage("QueryService.getAllLayouts", LogService.INFO);        
+        # make filtering more programmatic        
+        filters = [];
+        if userID != None:
+            filters = ["userID = " + str(userID)];
+        # TODO maybe sort the results starting with the latest by ID and get first result???
+        return DatabaseConnector.select(layout, filters).all()[-1];   
+    
+    @classmethod
+    def getDevice(self, deviceClientId, deviceCpuId):
+        LogService.logMessage("QueryService.getDevice", LogService.INFO);        
+        # make filtering more programmatic
+        filters = ["device_clientid = " + deviceClientId, "device_cpuid = " + deviceCpuId];                    
+        return DatabaseConnector.select(device, filters).all();   

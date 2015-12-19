@@ -12,9 +12,9 @@ class AbstractModel():
     # convert object to json representation    
     def toJson(self):        
         LogService.logMessage("AbstractModel.toJson", LogService.INFO);        
-        return (self.__repr__() + ":{" +
+        return ("{\"" + self.__repr__() + "\":{" +
                     self._toJson() + 
-                "}");                
+                "}}");                
     
     # convert child object to json representation
     # this SHALL be overriden by child class
@@ -25,7 +25,7 @@ class AbstractModel():
     # convert an array of objects to json representation    
     def toJsonArray(self, repr, array):
         LogService.logMessage("AbstractXmlToJsonService.toJsonArray", LogService.INFO);
-        reprJson = "," + repr + ": [";
+        reprJson = "," + self.safeStr(repr) + ": [";
     
         # parse all array elements
         for element in array:
@@ -50,7 +50,7 @@ class AbstractModel():
             return "\"\"";
         else:
             if hasattr(val, 'dontPutQuote') or not isinstance(val, str):
-                return strval;
+                return strval.replace("{", "").replace("}", "");
             else :
                 return "\"" + strval + "\"";                
     

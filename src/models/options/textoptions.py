@@ -12,7 +12,7 @@ class textoptions(options):
     fitText = -1
     
     # init textoptions object model
-    # direction {string} : direction property of text 
+    # direction {string} : direction property of #text 
     # scrollSpeed {number} : scroll speed property of text
     # fitText {number} : fit text property of text
     def __init__(self,  direction, scrollSpeed, fitText):               
@@ -24,9 +24,9 @@ class textoptions(options):
     # with all child objects traversed
     # this should be called from child class 
     def _toJson(self):        
-        return ("direction:" + self.safeStr(self.direction) +
-                ",scrollSpeed:" + self.safeStr(self.direction) +
-                ",fitText:" + self.safeStr(self.fitText));
+        return (self.safeStr(self.direction).replace("'", "\"") + 
+            "," + self.safeStr(self.direction).replace("'", "\"") + 
+            "," + self.safeStr(self.fitText).replace("'", "\""));
     
     # string representation of the object model
     def __repr__(self):
