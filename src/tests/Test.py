@@ -33,6 +33,22 @@ class Test(unittest.TestCase):
             print ("JSONVALUE : \n" + jsonval);
             self.assertRegex(jsonval, TestUtil.reCompile('(^layoutID|layoutURL|{|})'), "JSON VALUE VALID");      
 
+
+    def test_getlastlayout(self):
+        print ("test_getlastlayout\n");
+        layout = QueryService.getLastLayout(1);      
+        layoutResponse = "{\"layout\":";
+        if layout != None:
+            xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID);                
+            xmltojson.parse();            
+            layoutResponse += xmltojson.toJson();                                
+        else:
+            layoutResponse += "{}";
+        
+        layoutResponse += "}";
+        print ("JSONVALUE : \n" + layoutResponse);
+        self.assertRegex(layoutResponse, TestUtil.reCompile('(^layoutID|layoutURL|{|})'), "JSON VALUE VALID");      
+
     def test_crypt(self):
         print ("test_crypt\n");
         #message is CLIENT_ID + # + CPU_ID

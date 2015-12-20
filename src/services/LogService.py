@@ -15,7 +15,7 @@ class LogService(object):
     
     @staticmethod
     def logMessage(message, logType):
-        logging.basicConfig(filename='DigitalSignage.log',level=logging.DEBUG)
+        logging.basicConfig(filename='DigitalSignage.log',level=logging.INFO)
         if logType == LogService.DEBUG:
             logging.debug(message);
         elif logType == LogService.WARNING:

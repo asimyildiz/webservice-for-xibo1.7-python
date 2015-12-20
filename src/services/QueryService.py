@@ -27,13 +27,16 @@ class QueryService():
     
     @classmethod
     def getLastLayout(self, userID=None):
-        LogService.logMessage("QueryService.getAllLayouts", LogService.INFO);        
+        LogService.logMessage("QueryService.getLastLayout", LogService.INFO);        
         # make filtering more programmatic        
         filters = [];
         if userID != None:
             filters = ["userID = " + str(userID)];
         # TODO maybe sort the results starting with the latest by ID and get first result???
-        return DatabaseConnector.select(layout, filters).all()[-1];   
+        layouts = DatabaseConnector.select(layout, filters).all();
+        if len(layouts) > 0:
+            return layouts[-1];   
+        return None;
     
     @classmethod
     def getDevice(self, deviceClientId, deviceCpuId):

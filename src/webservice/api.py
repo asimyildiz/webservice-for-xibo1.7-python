@@ -32,18 +32,22 @@ def getLatestLayout(**kwargs):
     deviceIdentifier = kwargs.get('deviceIdentifier');
     userID = kwargs.get('userID');
     
-    layoutResponse = "{\"layouts\":[";
-    layouts = QueryService.getLastLayout(userID);
-    for layout in layouts: 
-        #LogService.logMessage("api.getLatestLayout : layout " + layout.xml, LogService.INFO);
+    layoutResponse = "{\"layout\":";
+    LogService.logMessage("api.getLatestLayout beforeQueryService", LogService.INFO);    
+    
+    layout = QueryService.getLastLayout(userID);    
+    LogService.logMessage("api.getLatestLayout afterQueryService", LogService.INFO);    
+    if layout != None:             
+        LogService.logMessage("api.getLatestLayout layout found", LogService.INFO);    
         xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID);    
         xmltojson.parse();
-        layoutResponse += xmltojson.toJson() + ",";
-    
-    if len(layouts) > 0 and layoutResponse.endswith(','):
-        layoutResponse = layoutResponse[:-1];
+        layoutResponse += xmltojson.toJson();
+    else:
+        LogService.logMessage("api.getLatestLayout layout not found", LogService.INFO);    
+        layoutResponse += "{}";    
         
-    return layoutResponse += "]}";
+    layoutResponse += "}";    
+    return layoutResponse;
         
 @dispatcher.add_method
 def validateBox(**kwargs):

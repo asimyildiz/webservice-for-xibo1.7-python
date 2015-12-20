@@ -19,4 +19,5 @@ KEY_CODE = "DigitalSignage";
 KEY_PASS = "Di2015sign#";
 XIBO_ASSET_PATH = "C:\\Development\\Storage\\Xibo\\";
 ZIP_SAVE_PATH = "C:\\Development\\Projects\\Web\\Php\\assets\\";
-WEBSERVER_ASSET_IP = "http://127.0.0.1:81/assets/";
+# TODO UPDATE THIS FOR PRODUCTION
+WEBSERVER_ASSET_IP = "http://10.0.2.2:81/assets/";
