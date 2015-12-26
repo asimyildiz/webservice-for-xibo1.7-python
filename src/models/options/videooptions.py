@@ -17,7 +17,7 @@ class videooptions(options):
     # with all child objects traversed
     # this should be called from child class 
     def _toJson(self):        
-        return self.safeStr(self.uri).replace("'", "\"");
+        return self.safeStr("uri") + ":" + self.safeStr(self.uri).replace("'", "\"");
     
     # string representation of the object model
     def __repr__(self):

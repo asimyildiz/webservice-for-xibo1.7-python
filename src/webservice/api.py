@@ -39,7 +39,7 @@ def getLatestLayout(**kwargs):
     LogService.logMessage("api.getLatestLayout afterQueryService", LogService.INFO);    
     if layout != None:             
         LogService.logMessage("api.getLatestLayout layout found", LogService.INFO);    
-        xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID);    
+        xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID, layout.modifiedDT);    
         xmltojson.parse();
         layoutResponse += xmltojson.toJson();
     else:

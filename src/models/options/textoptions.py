@@ -24,9 +24,9 @@ class textoptions(options):
     # with all child objects traversed
     # this should be called from child class 
     def _toJson(self):        
-        return (self.safeStr(self.direction).replace("'", "\"") + 
-            "," + self.safeStr(self.direction).replace("'", "\"") + 
-            "," + self.safeStr(self.fitText).replace("'", "\""));
+        return (self.safeStr("direction") + ":" + self.safeStr(self.direction).replace("'", "\"") + 
+            "," + self.safeStr("scrollSpeed") + ":" + self.safeStr(self.direction).replace("'", "\"") + 
+            "," + self.safeStr("fitText") + ":" + self.safeStr(self.fitText).replace("'", "\""));
     
     # string representation of the object model
     def __repr__(self):

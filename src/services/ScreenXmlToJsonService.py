@@ -15,9 +15,11 @@ from models.region import region
 from models.options.textoptions import textoptions
 from models.options.videooptions import videooptions
 from models.options.imageoptions import imageoptions
+from models.options.clockoptions import clockoptions
 from models.media.textmedia import textmedia
 from models.media.livemedia import livemedia
 from models.media.imagemedia import imagemedia
+from models.media.clockmedia import clockmedia
 from models.static.mediatypes import mediatypes
 
 class ScreenXmlToJsonService(AbstractXmlToJsonService):        
@@ -26,8 +28,8 @@ class ScreenXmlToJsonService(AbstractXmlToJsonService):
     
     # init screenxmltojsonservice object
     # because python does not call automatically the base contructor
-    def __init__(self, xml, layoutID):        
-        super(ScreenXmlToJsonService,self).__init__(xml, layoutID)
+    def __init__(self, xml, layoutID, lastModifiedDate):        
+        super(ScreenXmlToJsonService,self).__init__(xml, layoutID, lastModifiedDate)
         self.__assets = [];
         
     # @override
@@ -42,7 +44,7 @@ class ScreenXmlToJsonService(AbstractXmlToJsonService):
     # convert object to json representation
     def toJson(self):
         LogService.logMessage("ScreenXmlToJsonService.toJson", LogService.INFO);        
-        return "{\"layoutID\": " + str(self._layoutID) + ",\"layoutURL\": \"" + settings.WEBSERVER_ASSET_IP + str(self._layoutID) + "/layout.zip\"}";        
+        return "{\"layoutID\": " + str(self._layoutID) + ",\"layoutURL\": \"" + settings.WEBSERVER_ASSET_IP + str(self._layoutID) + "/layout.zip\",\"lastModifiedDate\": \"" + str(self._lastModifiedDate) + "\"}";
         
     # parse screen from xml
     # attributes {dict} : attributes dictionary
@@ -85,17 +87,21 @@ class ScreenXmlToJsonService(AbstractXmlToJsonService):
         elif (mediaxml.get("type") == mediatypes.IMG):
             media = imagemedia(duration, self.__parseOptions(mediaxml.iter("options"), imageoptions, True)[0])
             newregion.addMedia(media);
+        elif (mediaxml.get("type") == mediatypes.CLOCK):
+            #format = mediaxml.find("p");
+            media = clockmedia(duration, self.__parseOptions(mediaxml.iter("options"), clockoptions, False)[0], format)
+            newregion.addMedia(media);
         #print (attributes);
     
     # parse options from xml
     # optionsxml {string} xml
     def __parseOptions(self, optionsxml, options, externalAsset):
         alloptions = []
-        for optionxml in list(optionsxml):
-            alloptions.append(options(dict([(option.tag, option.text) for option in optionxml])));
+        for optionxml in list(optionsxml):                        
+            alloptions.append(options(**dict([(option.tag, option.text) for option in optionxml])));
             if externalAsset:
                 for option in optionxml:
-                    self.__assets.append(option.text)
+                    self.__assets.append(option.text)        
         return alloptions;
     
     # convert object to json representation

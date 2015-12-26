@@ -11,4 +11,4 @@ class mediatypes():
     IMG="image"
     LIVE="localvideo" #rtmp, hls streams
     VIDEO="video" #mp4
-    
+    CLOCK="clock"

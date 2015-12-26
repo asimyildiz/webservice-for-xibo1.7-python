@@ -17,7 +17,7 @@ class Test(unittest.TestCase):
         print ("test_xmltojson\n");
         layouts = QueryService.getAllLayouts();
         for layout in layouts:            
-            xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID);                
+            xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID, layout.modifiedDT);                
             xmltojson.parse();
             jsonval = xmltojson.screenToJson();
             print ("JSONVALUE : \n" + jsonval);
@@ -27,7 +27,7 @@ class Test(unittest.TestCase):
         print ("test_xmltojson\n");
         layouts = QueryService.getAllLayouts();
         for layout in layouts:            
-            xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID);                
+            xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID, layout.modifiedDT);                
             xmltojson.parse();
             jsonval = xmltojson.toJson();
             print ("JSONVALUE : \n" + jsonval);
@@ -39,7 +39,7 @@ class Test(unittest.TestCase):
         layout = QueryService.getLastLayout(1);      
         layoutResponse = "{\"layout\":";
         if layout != None:
-            xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID);                
+            xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID, layout.modifiedDT);                
             xmltojson.parse();            
             layoutResponse += xmltojson.toJson();                                
         else:
