@@ -12,3 +12,4 @@ class mediatypes():
     LIVE="localvideo" #rtmp, hls streams
     VIDEO="video" #mp4
     CLOCK="clock"
+    WEATHER="forecastio"

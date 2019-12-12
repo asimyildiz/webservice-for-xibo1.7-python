@@ -2,33 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/media/livemedia.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/region.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/webservice/api.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/screen.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/services/QueryService.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/static/directions.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/transitions/transition.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/static/fontstyles.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/webservice/server_simple.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/services/AbstractXmlToJsonService.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/static/mediatypes.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/services/ScreenXmlToJsonService.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/options/imageoptions.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/media/media.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/tests/Test.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/util/Util.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/tests/TestUtil.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/options/options.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/options/textoptions.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/media/imagemedia.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/media/textmedia.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/AbstractModel.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/services/LogService.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/options/videooptions.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/settings/common.py</file>
-            <file>file:/C:/Development/Projects/WebService/Python/DigitalSignage/src/models/transitions/transitionout.py</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

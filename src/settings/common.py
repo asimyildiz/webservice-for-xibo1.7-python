@@ -18,7 +18,7 @@ UNIQUE_KEY = 'FDF50D13EF8F478791778BEC854057A1';
 SEPARATOR = "#";
 KEY_CODE = "DigitalSignage";
 KEY_PASS = "Di2015sign#";
-XIBO_ASSET_PATH = "C:\\Development\\Storage\\Xibo\\";
-ZIP_SAVE_PATH = "C:\\Development\\Projects\\Web\\Php\\assets\\";
+XIBO_ASSET_PATH = "/var/www/html/xibo/storage/";
+ZIP_SAVE_PATH = "/var/www/html/xibo/assets/";
 # TODO UPDATE THIS FOR PRODUCTION
-WEBSERVER_ASSET_IP = "http://10.0.2.2:81/assets/";
+WEBSERVER_ASSET_IP = "http://10.0.2.2:81/xibo/assets/";

@@ -8,18 +8,22 @@ __date__ = "$19.Eki.2015 20:33:37$"
 import settings
 import zipfile
 import os
+import xml.etree.ElementTree
 from .AbstractXmlToJsonService import AbstractXmlToJsonService
 from services.LogService import LogService
 from models.screen import screen
 from models.region import region
-from models.options.textoptions import textoptions
+#from models.options.textoptions import textoptions
+from models.options.textoptionsn import textoptionsn
 from models.options.videooptions import videooptions
 from models.options.imageoptions import imageoptions
 from models.options.clockoptions import clockoptions
+from models.options.weatheroptions import weatheroptions
 from models.media.textmedia import textmedia
 from models.media.livemedia import livemedia
 from models.media.imagemedia import imagemedia
 from models.media.clockmedia import clockmedia
+from models.media.weathermedia import weathermedia
 from models.static.mediatypes import mediatypes
 
 class ScreenXmlToJsonService(AbstractXmlToJsonService):        
@@ -79,17 +83,25 @@ class ScreenXmlToJsonService(AbstractXmlToJsonService):
     def __parseMedia(self, mediaxml, newregion):        
         attributes = mediaxml.attrib;
         duration = attributes.get("duration");
-        #if (mediaxml.get("type") == mediatypes.TEXT):
-        #    self.__parseOptions(mediaxml.iter("options"), textoptions)            
+        if (mediaxml.get("type") == mediatypes.TEXT):
+            media = textmedia(duration, textoptionsn());
+            rawElements = mediaxml.iter("raw");
+            for rawElement in rawElements:
+                for textElement in rawElement:
+                    media.setText(textElement.text);
+            newregion.addMedia(media);
         if (mediaxml.get("type") == mediatypes.LIVE):
-            media = livemedia(duration, self.__parseOptions(mediaxml.iter("options"), videooptions, False)[0])            
+            media = livemedia(duration, self.__parseOptions(mediaxml.iter("options"), videooptions, False)[0]);
             newregion.addMedia(media);            
         elif (mediaxml.get("type") == mediatypes.IMG):
-            media = imagemedia(duration, self.__parseOptions(mediaxml.iter("options"), imageoptions, True)[0])
+            media = imagemedia(duration, self.__parseOptions(mediaxml.iter("options"), imageoptions, True)[0]);
             newregion.addMedia(media);
         elif (mediaxml.get("type") == mediatypes.CLOCK):
             #format = mediaxml.find("p");
-            media = clockmedia(duration, self.__parseOptions(mediaxml.iter("options"), clockoptions, False)[0], format)
+            media = clockmedia(duration, self.__parseOptions(mediaxml.iter("options"), clockoptions, False)[0], format);
+            newregion.addMedia(media);
+        elif (mediaxml.get("type") == mediatypes.WEATHER):
+            media = weathermedia(duration, self.__parseOptions(mediaxml.iter("options"), weatheroptions, False)[0]);
             newregion.addMedia(media);
         #print (attributes);
     
@@ -103,7 +115,7 @@ class ScreenXmlToJsonService(AbstractXmlToJsonService):
                 for option in optionxml:
                     self.__assets.append(option.text)        
         return alloptions;
-    
+     
     # convert object to json representation
     # TODO MAKE THIS METHOD PRIVATE WHEN ON PRODUCTION OK!!!
     def screenToJson(self):
@@ -114,7 +126,7 @@ class ScreenXmlToJsonService(AbstractXmlToJsonService):
     # folder {string} path of the folder to put the zip file
     # zipSaveFolder {string} path of the folder to save the zip file
     def __saveAssets(self, folder, zipSaveFolder):
-        directory = zipSaveFolder + str(self._layoutID) + "\\";
+        directory = zipSaveFolder + str(self._layoutID) + "/";
         if not os.path.exists(directory):
             os.makedirs(directory);
         

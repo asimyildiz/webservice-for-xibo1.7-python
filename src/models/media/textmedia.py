@@ -9,6 +9,7 @@ import settings
 from .media import media
 from models.options.textoptions import textoptions
 class textmedia(media):
+    text = ""
     fontSize = -1
     fontColor = ""
     fontFamily = []
@@ -42,11 +43,17 @@ class textmedia(media):
     def addFontStyle(self, fontStyle):
         self.fontStyles.append(fontStyle);
         
+    # set text
+    # text {string} : text value
+    def setText(self, text):
+        self.text = text;
+        
     # convert object to json representation
     # with all base objects added    
     def _toJson(self):        
         mediaJson = super(textmedia,self)._toJson();
-        mediaJson += ("," + self.safeStr("fontSize") + ":" + self.safeStr(self.fontSize) +
+        mediaJson += ("," + self.safeStr("text") + ":" + self.safeStr(self.text) +
+                    "," + self.safeStr("fontSize") + ":" + self.safeStr(self.fontSize) +
                     "," + self.safeStr("fontColor") + ":" + self.safeStr(self.fontColor));
         mediaJson += self.toJsonArray("fontFamily", self.fontFamily);
         mediaJson += self.toJsonArray("fontStyles", self.fontStyles);
@@ -63,6 +70,7 @@ class textmedia(media):
         return ("textmedia() : {" + 
                 "\nduration : " + self.safeStr(self.duration) + 
                 "\ntextoptions : " + self.safeStr(self.options) + 
+                "\ntext : " + self.safeStr(self.text) + 
                 "\nfontSize : " + self.safeStr(self.fontSize) + 
                 "\nfontColor : " + self.safeStr(self.fontColor) +
                 "\nfontFamily : " + ', '.join(self.safeStr(obj) for obj in self.fontFamily) + 

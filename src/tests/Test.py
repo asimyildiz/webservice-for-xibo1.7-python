@@ -5,6 +5,10 @@
 __author__ = "asim"
 __date__ = "$19.Eki.2015 20:39:01$"
 
+import os, sys, re
+lib_path = os.path.abspath(os.path.join('..'))
+sys.path.append(lib_path)
+
 import unittest
 import settings
 from tests.TestUtil import TestUtil
@@ -16,7 +20,7 @@ class Test(unittest.TestCase):
     def test_xmltojson(self):
         print ("test_xmltojson\n");
         layouts = QueryService.getAllLayouts();
-        for layout in layouts:            
+        for layout in layouts:
             xmltojson = ScreenXmlToJsonService(layout.xml, layout.layoutID, layout.modifiedDT);                
             xmltojson.parse();
             jsonval = xmltojson.screenToJson();

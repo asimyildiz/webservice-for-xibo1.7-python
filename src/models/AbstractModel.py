@@ -32,7 +32,7 @@ class AbstractModel():
             if hasattr(element, 'toJson'):
                 reprJson += element.toJson() + ",";
             else:
-                reprJson += str(element) + ",";
+                reprJson += self.safeStr(element) + ",";
     
         # if element is found and endswith a ',' comma, remove the comma
         elementFound = len(array)
@@ -46,6 +46,8 @@ class AbstractModel():
     # safely convert a primitive type to string
     def safeStr(self, val):            
         strval = str(val);
+        strval = strval.replace("\n", "");
+        strval = strval.replace("\"", "'");
         if (not strval):
             return "\"\"";
         else:

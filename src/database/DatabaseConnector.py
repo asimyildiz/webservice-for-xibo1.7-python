@@ -16,7 +16,7 @@ class DatabaseConnector():
     @classmethod
     def __startSession(self):
         LogService.logMessage("DatabaseConnector.__startSession", LogService.INFO);                    
-        database_connection = '{0}://{1}:{2}@{3}/{4}'.format(settings.database_type, settings.database_user, settings.database_pass, ':' + settings.database_port, settings.database_name)        
+        database_connection = '{0}://{1}:{2}@{3}/{4}?unix_socket=/var/run/mysqld/mysqld.sock'.format(settings.database_type, settings.database_user, settings.database_pass, '127.0.0.1:' + settings.database_port, settings.database_name)        
         self._engine = create_engine(database_connection, echo=settings.DATABASE_LOGGING)        
         self.__createSession()
     
@@ -59,6 +59,9 @@ class DatabaseConnector():
         except SQLAlchemyError as e:
             # log an error message here
             LogService.logMessage("DatabaseConnector.select : select failed exception " + e.strerror, LogService.CRITICAL);
+            return None
+        except:
+            LogService.logMessage("DatabaseConnector.select : select failed exception ", LogService.INFO);
             return None
         
     @classmethod    
